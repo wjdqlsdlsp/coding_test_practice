@@ -1,4 +1,4 @@
-# Coding test practice
+# Coding test practice ( 깃헙 잔디심기 프로젝트 )
 
 ### 나만의 코딩테스트 연습공간입니다.
 ### Start : 21/07/23
