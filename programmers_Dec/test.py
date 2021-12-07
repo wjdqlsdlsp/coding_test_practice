@@ -1,6 +1,6 @@
-def solution(n):
-    answer = 0
-    for i in range(1,n):
-        if n%i == 1:
-            return i
-print(solution(10))
+print("hello this is my mac test")
+
+arr = [i for i in range(20)]
+
+print(arr)
+
