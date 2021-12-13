@@ -1,12 +1,10 @@
 from itertools import permutations
 def solution(k, dungeons):
-    answer = -1
     arr = [*permutations(dungeons,len(dungeons))]
 
     max_count = 0
     for ep in arr:
-        count = 0
-        life = k
+        count, life = 0, k
         for a,b in ep:
             if life >= a:
                 count += 1

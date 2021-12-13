@@ -1,7 +1,3 @@
-a = set()
+arr =[1,2,3,4,5,6,7,8]
 
-a.add(set([1,2]))
-a.add((2,2))
-
-
-print(a)
+print([*filter(lambda x : x%2 == 0, arr)])
