@@ -1,15 +1,18 @@
-from collections import deque
+# from collections import deque
 n = int(input())
-
 
 for _ in range(n):
     start, end = map(int, input().split())
     distance = end - start
     count = 0
-    while distance > 0:
-        t = int(distance**0.5)
-        distance = distance - t**2
-        count = count + 2*t -1
+    t = int(distance**0.5)
+    distance = distance - t**2
+    count = count + 2*t -1
+    if distance != 0:
+        if distance <= t:
+            count+=1
+        else:
+            count+=2
     print(count)
     # arr = deque([(start+1, 1, 1)])
     # visited = set()
