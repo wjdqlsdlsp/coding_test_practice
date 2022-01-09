@@ -1,6 +1,5 @@
 from itertools import combinations
-# a = int(input())
-a = 18
+a = int(input())
 
 result = []
 for i in range(1,11):
@@ -10,7 +9,6 @@ for i in range(1,11):
         result.append(int("".join(map(str, tmp))))
 
 result.sort()
-
 
 if len(result) < a:
     print(-1)
