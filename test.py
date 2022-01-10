@@ -1,6 +1,10 @@
-arr = []
+import copy
 
-if arr is None:
-    print("Yes")
-else:
-    print("No")
+a = [1,2,3]
+
+b = copy.copy(a)
+
+a.pop()
+
+
+print(a,b)
