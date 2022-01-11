@@ -1,10 +1,2 @@
-import copy
-
-a = [1,2,3]
-
-b = copy.copy(a)
-
-a.pop()
-
-
-print(a,b)
+if 2 and 2:
+    print(1)
