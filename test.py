@@ -1,2 +1,3 @@
-if 2 and 2:
-    print(1)
+a = "abcde"
+a = a[::-1]
+print(a)
