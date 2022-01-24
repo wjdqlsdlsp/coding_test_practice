@@ -1,3 +1,3 @@
-a = "abcde"
-a = a[::-1]
+a = int(12.5)
+
 print(a)
