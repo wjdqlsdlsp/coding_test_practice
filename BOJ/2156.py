@@ -1,33 +1,21 @@
 import sys
-import copy
+
 n = int(sys.stdin.readline())
 arr = []
 for _ in range(n):
     input_tmp = int(sys.stdin.readline())
     arr.append(input_tmp)
 
+recur = [0 for _ in range(n)]
+recur[0] = arr[0]
 
-max_count = 0
-def DFS(arr, check, i, count):
-    if i == len(arr):
-        global max_count
-        if max_count < count:
-            max_count = count
-        return
+if n > 1:
+    recur[1] = arr[0] + arr[1]
 
-    if i >= 2 and check[i-2] and check[i-1]:
-        tmp = copy.copy(check)
-        DFS(arr, tmp, i+1, count)
+if n > 2:
+    recur[2] = max(recur[0]+arr[2], recur[1], arr[1]+arr[2])
 
-    else:
-        tmp1 = copy.copy(check)
-        DFS(arr, tmp1, i+1, count)
-        tmp2 = copy.copy(check)
-        tmp2[i] = True
-        DFS(arr, tmp2, i+1, count+ arr[i])
+for i in range(3, n):
+    recur[i] = max(recur[i-1], recur[i-2]+arr[i], recur[i-3]+arr[i-1]+arr[i])
 
-
-DFS(arr, [False for _ in range(len(arr))], 1, 0)
-DFS(arr, [True]+[False for _ in range(len(arr)-1)], 1, arr[0])
-
-print(max_count)
+print(recur[n-1])
