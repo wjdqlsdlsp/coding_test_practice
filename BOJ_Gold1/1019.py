@@ -25,3 +25,5 @@ while page_n != 0:
     page_n //= 10
 
 print(" ".join(map(str,arr)))
+
+# 너무어렵다...
