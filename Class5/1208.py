@@ -39,8 +39,6 @@ right_sort = [*right_sort_count.keys()]
 
 left_length, right_length = len(left_sort), len(right_sort)
 
-print(left_sort, right_sort)
-
 while left_i < left_length and right_i < right_length:
     if left_sort[left_i] + right_sort[right_i] == s:
         result = result + (left_sort_count[left_sort[left_i]] * right_sort_count[right_sort[right_i]])
