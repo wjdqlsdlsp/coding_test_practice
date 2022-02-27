@@ -11,27 +11,24 @@ for _ in range(m):
 
 arr = sorted(arr, key = lambda x : x[2])
 result = 0
-now = n
 
 def find(num):
     if roots[num] == num:
         return num
     roots[num] = find(roots[num])
-    global now
-    now-=1
     return roots[num]
 
 
 def union(a,b):
-    p_a = find(a)
-    p_b = find(b)
+    a = find(a)
+    b = find(b)
 
-    if p_a > p_b:
-        roots[p_a] = p_b
+    if a > b:
+        roots[a] = b
     else:
-        roots[p_b] = p_a
+        roots[b] = a
 
-
+last = 0
 
 for a,b,cost in arr:
     if n == 2:
@@ -40,7 +37,6 @@ for a,b,cost in arr:
         continue
     else:
         union(a,b)
-        now-=1
         result += cost
-
-print(result)
+        last = cost
+print(result - last)
