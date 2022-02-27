@@ -1,1 +1,5 @@
-print( (1<<10) | (1 << 10))
+arr = [1,2,3,4]
+
+arr = "".join(arr)
+
+print(arr)
