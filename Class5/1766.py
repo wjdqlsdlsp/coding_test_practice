@@ -17,12 +17,12 @@ q = []
 for i, v in enumerate(arr[1:], 1):
     if v == 0:
         heapq.heappush(q, i)
-
-while len(result) != n:
+count = 0
+while count != n:
     i = heapq.heappop(q)
-    result.append(i)
+    print(i, end=" ")
+    count +=1
     for j in s[i]:
         arr[j] -=1
         if arr[j]==0:
             heapq.heappush(q, j)
-print(result)
