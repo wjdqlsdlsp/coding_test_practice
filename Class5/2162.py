@@ -19,27 +19,6 @@ def union(x, y):
     elif parentY > parentX:
         parent[parentY] = parentX
 
-def is_meet(a, b):
-    # a = [x1, y1, x2, y2]
-    if (a[2]-a[0]) == 0:
-        m1 = 0
-    else:
-        m1 = (a[3] - a[1]) / (a[2]-a[0])
-    m2 = a[3] - (m1*a[2])
-    # y = m1x + m2
-    t1 = b[1] - m1*b[0]-m2
-    t2 = b[3] - m1*b[2]-m2
-    if t1 * t2 <= 0:
-        return True
-    else:
-        return False
-
-def result_meet(a,b):
-    if is_meet(a,b) & is_meet(b,a):
-        return True
-    else:
-        return False
-
 def ccw(p1, p2, p3):
     temp = (p1[0] * p2[1]) + (p2[0] * p3[1]) + (p3[0] * p1[1])
     temp = temp - (p1[1] * p2[0]) - (p2[1] * p3[0]) - (p3[1] * p1[0])
@@ -50,6 +29,7 @@ def ccw(p1, p2, p3):
     else:
         return 0
 def checkCross(li1, li2):
+
     li1p1 = [li1[0], li1[1]]
     li1p2 = [li1[2], li1[3]]
     li2p1 = [li2[0], li2[1]]
@@ -66,6 +46,7 @@ def checkCross(li1, li2):
         else:
             return True
     return False
+
 for i in range(n):
     s.append(list(map(int, input().split())))
     parent.append(i)
