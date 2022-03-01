@@ -1,0 +1,80 @@
+import sys
+from collections import Counter
+N = int(sys.stdin.readline().split()[0])
+arr = [[*map(int, sys.stdin.readline().split())]for i in range(N)]
+arr = [0] + arr
+
+# def is_meet(a, b):
+#     # a = [x1, y1, x2, y2]
+#     if (a[2]-a[0]) == 0:
+#         m1 = 0
+#     else:
+#         m1 = (a[3] - a[1]) / (a[2]-a[0])
+#     m2 = a[3] - (m1*a[2])
+#     # y = m1x + m2
+#     t1 = b[1] - m1*b[0]-m2
+#     t2 = b[3] - m1*b[2]-m2
+#     if t1 * t2 <= 0:
+#         return True
+#     else:
+#         return False
+
+# def result_meet(a,b):
+#     if is_meet(a,b) & is_meet(b,a):
+#         return True
+#     else:
+#         return False
+
+def ccw(p1, p2, p3):
+    temp = (p1[0] * p2[1]) + (p2[0] * p3[1]) + (p3[0] * p1[1])
+    temp = temp - (p1[1] * p2[0]) - (p2[1] * p3[0]) - (p3[1] * p1[0])
+    if temp > 0:
+        return 1
+    elif temp < 0:
+        return -1
+    else:
+        return 0
+def checkCross(li1, li2):
+    li1p1 = [li1[0], li1[1]]
+    li1p2 = [li1[2], li1[3]]
+    li2p1 = [li2[0], li2[1]]
+    li2p2 = [li2[2], li2[3]]
+    result1 = ccw(li1p1, li1p2, li2p1) * ccw(li1p1, li1p2, li2p2)
+    result2 = ccw(li2p1, li2p2, li1p1) * ccw(li2p1, li2p2, li1p2)
+    if result1 <= 0 and result2 <= 0:
+        if ((li1p1[0] > li2p1[0] and li1p1[0] > li2p2[0] and li1p2[0] > li2p1[0] and li1p2[0] > li2p2[0]) 
+        or (li1p1[0] < li2p1[0] and li1p1[0] < li2p2[0] and li1p2[0] < li2p1[0] and li1p2[0] < li2p2[0])):
+            return False
+        elif ((li1p1[1] > li2p1[1] and li1p1[1] > li2p2[1] and li1p2[1] > li2p1[1] and li1p2[1] > li2p2[1]) 
+        or (li1p1[1] < li2p1[1] and li1p1[1] < li2p2[1] and li1p2[1] < li2p1[1] and li1p2[1] < li2p2[1])):
+            return False
+        else:
+            return True
+    return False
+
+parent = [i for i in range(N+1)]
+
+def find(x):
+    if x == parent[x]:
+        return x
+    parent[x] = find(parent[x])
+    return parent[x]
+
+def union(a,b):
+    a = find(a)
+    b = find(b)
+
+    if a < b:
+        parent[b] = a
+    else:
+        parent[a] = b
+
+for i in range(1, N):
+    for j in range(i+1, N+1):
+
+        if checkCross(arr[i], arr[j]):
+            union(j, i)
+
+result = Counter(parent[1:]).values()
+print(len(result))
+print(max(result))
