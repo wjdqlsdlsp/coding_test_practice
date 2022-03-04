@@ -17,22 +17,22 @@ for _ in range(N):
         r, c = stack.pop()
         candidate = [(r-1,c), (r+1, c),(r, c-1), (r, c+1)]
         item = arr[r][c]
-
+        
+        # 달러일때
         if item == "$":
             result +=1
-        
+        # 키가 있을 때
         elif item.lower() in keys:
             pass
-
+        # 키일 때
         elif 'a' <= item <= 'z':
             keys.add(item)
             candidate += unlock[item]
             unlock[item] = list()
-
+        # 키가없는 문일 때
         elif item != "*":
             unlock[item.lower()].append((r,c))
             continue
-
         else:
             continue
 
