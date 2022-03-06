@@ -1,2 +1,5 @@
-dp = [1 for i in range(1<16)]
-print(dp)
+import sys
+
+a = list(sys.stdin.readline().split()[0])
+
+print(a)
