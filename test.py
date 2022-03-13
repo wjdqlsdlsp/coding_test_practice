@@ -1,25 +1,45 @@
 import sys
-
-sys.setrecursionlimit(10 ** 9)
-n = int(sys.stdin.readline())
-lines = [[] for _ in range(n + 1)]
-for _ in range(n - 1):
-    a, b = map(int, sys.stdin.readline().split())
-    lines[a].append(b)
-    lines[b].append(a)
-dp = [[0, 0] for _ in range(n + 1)]
-visited = [0 for _ in range(n + 1)]
-
-
-def dfs(r):
-    visited[r] = 1
-    dp[r][0] = 1
-    for i in lines[r]:
-        if not visited[i]:
-            dfs(i)
-            dp[r][0] += min(dp[i][0], dp[i][1])
-            dp[r][1] += dp[i][0]
-
-
-dfs(1)
-print(min(dp[1][0], dp[1][1]))
+import math
+ 
+def init_tree(start, end, index):
+    if start == end:
+        tree[index] = arr[start]
+    else:
+        mid = (start + end) // 2
+        tree[index] = init_tree(start, mid, 2*index) * init_tree(mid+1, end, 2*index + 1) % 1000000007
+    return tree[index]
+ 
+def find_mul(start, end, index, left, right):
+    if left > end or right < start:
+        return 1
+    if left <= start and end <= right:
+        return tree[index]
+ 
+    mid = (start + end) // 2
+    return find_mul(start, mid, 2*index, left, right) * find_mul(mid+1, end, 2*index + 1, left, right) % 1000000007
+ 
+def update_tree(start, end, index, where, diff):
+    if where < start or end < where:
+        return
+ 
+    if start == end:
+        tree[index] = diff
+    else:
+        mid = (start + end) // 2
+        update_tree(start, mid, index*2, where, diff)
+        update_tree(mid+1, end, index*2 + 1, where, diff)
+        tree[index] = tree[2*index] * tree[2*index + 1] % 1000000007
+ 
+N, M, K = map(int, sys.stdin.readline().split())
+arr = [int(sys.stdin.readline()) for _ in range(N)]
+tree = [0] * (1 << (int(math.ceil(math.log2(N))) + 1))
+init_tree(0, N-1, 1)
+ 
+for _ in range(M + K):
+    a, b, c = map(int, sys.stdin.readline().split())
+ 
+    if a == 1: # 수 변경
+        update_tree(0, N-1, 1, b-1, c)
+ 
+    else: # elif a == 2: # 구간 곱 구하기
+        print(find_mul(0, N-1, 1, b-1, c-1))
