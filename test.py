@@ -5,3 +5,4 @@ arr.add((2,2))
 
 a = arr.pop()
 print(a)
+print(a)
