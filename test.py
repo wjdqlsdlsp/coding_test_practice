@@ -1,8 +1,6 @@
-arr = set()
+a = "hello"
 
-arr.add((1,2))
-arr.add((2,2))
+i, j = 1, 3
 
-a = arr.pop()
-print(a)
+a = a[:i] + a[j] + a[i+1: j] + a[i] + a[j+1:]
 print(a)
