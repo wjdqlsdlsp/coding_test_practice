@@ -1,6 +1,5 @@
-a = "hello"
+a = dict()
+a["d"] = 1
+a["b"] = 1
 
-i, j = 1, 3
-
-a = a[:i] + a[j] + a[i+1: j] + a[i] + a[j+1:]
-print(a)
+print(len(a))
