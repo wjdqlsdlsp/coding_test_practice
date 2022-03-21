@@ -1,5 +1,3 @@
-a = dict()
-a["d"] = 1
-a["b"] = 1
+y = -4
 
-print(len(a))
+print( y % 4)
