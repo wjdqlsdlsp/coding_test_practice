@@ -1,1 +1,3 @@
-print(bin(1<<8))
+y = -4
+
+print( y % 4)
