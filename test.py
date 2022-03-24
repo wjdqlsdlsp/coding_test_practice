@@ -1,3 +1,4 @@
-y = -4
+def solution(s, n):
+    return "".join([chr(ord(i)+n) for i in s])
 
-print( y % 4)
+print(solution("AB", 1))
