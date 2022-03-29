@@ -66,16 +66,12 @@ def solution(n, m, room, bath):
                     if bath2_break:
                         continue
 
-
-
-
                     # 세번째 조건 : 문이 있어야함
                     door = sum(arr2[0]) + sum(arr2[n-1]) + \
                     sum([*map(lambda x : x[0], arr2)]) + sum([*map(lambda x : x[m-1],arr2)])
 
                     if door == 0:
                         continue
-
 
                     # 첫번째 조건 : 한곳이라도 입구가 있어야함
                     is_meet_break = 0
@@ -107,8 +103,6 @@ def solution(n, m, room, bath):
                             is_meet_break =1
                             break
 
-
-
                     for y, x in bath2_position:
                         meet_place = 0
                         for tmp_dx, tmp_dy in [[0,0], [0, 1]]:
@@ -125,8 +119,6 @@ def solution(n, m, room, bath):
                     if is_meet_break:
                         continue
 
-
-
                     # 두번째 조건 : 모든 빈공간은 이어져있음
                     check_tmp = 0
                     for y in range(n):
@@ -139,8 +131,6 @@ def solution(n, m, room, bath):
                             break
                     else:
                         continue
-
-
 
                     q = deque([[start_y, start_x]])
                     visited = set()
@@ -158,16 +148,11 @@ def solution(n, m, room, bath):
                             if 0<= next_x < m and 0 <= next_y < n:
                                 q.append([next_y, next_x])
 
-
-
                     total_blank = 0
                     for i in arr2:
                         total_blank += sum(i)
 
-
                     if total_blank == len(visited):
                         answer+=1 
-
-
 
     return answer   
