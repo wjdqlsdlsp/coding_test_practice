@@ -1,9 +1,9 @@
-str1 = input()
-str2 = input()
+r = int(input())
+h = int(input())
 
-n = int(input())
-m = int(input())
+round = 2 * 3.14 * r
+vol = 3.14 * r * r *h
 
-print(f"Add str1 and str2 : {str1 + str2}")
-print(f"Repeat str1 X{n} : {str1 * n}")
-print(f"Repeat str2 X{m} : {str2 * m}")
+print("r = %d" %r)
+print("round = %.2f" %round)
+print("vol = %.2f" %vol)
