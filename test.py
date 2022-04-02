@@ -1,9 +1,6 @@
-r = int(input())
-h = int(input())
+import math
 
-round = 2 * 3.14 * r
-vol = 3.14 * r * r *h
+def comb(n, t):
+    return math.factorial(n) // math.factorial(n-t) //math.factorial(t)
 
-print("r = %d" %r)
-print("round = %.2f" %round)
-print("vol = %.2f" %vol)
+print(comb(5,3))  
