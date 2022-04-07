@@ -11,7 +11,7 @@ def solution(n, m, room, bath):
     tile_position = [[y, x] for x in range(m) for y in range(n)]
     bath_type = [[i, bath-i] for i in range(bath+1)]
     for room_position in [*combinations(tile_position, room)]:
-        arr = copy.deepcopy(tile)    
+        arr = copy.deepcopy(tile)
         break_tmp=0
         for y, x in room_position:
             if y+1 < n and x+1 <m:
